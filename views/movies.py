@@ -1,10 +1,8 @@
-
-from flask import request, jsonify
+from flask import request
 from flask_restx import Resource, Namespace
 
 from container import movie_service
 from dao.model.movie import MovieSchema
-
 
 movie_ns = Namespace('movies')
 
@@ -16,7 +14,7 @@ movies_schema = MovieSchema(many=True)
 class MoviesView(Resource):
     def get(self):
         all_movie = movie_service.get_all()
-        return movie_schema.dump(all_movie), 200
+        return movies_schema.dump(all_movie), 200
 
     def post(self):
         req_json = request.json
@@ -30,7 +28,6 @@ class MovieView(Resource):
     def get(self, mid: int):
         try:
             movie = movie_service.get_one(mid)
-            print(type(movie))
             return movie_schema.dump(movie)
 
         except Exception:

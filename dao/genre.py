@@ -6,7 +6,7 @@ class GenreDAO():
         self.session = session
 
     def get_one(self, gid):
-        return self.get_one(gid)
+        return self.session.query(Genre).get(gid)
 
 
     def get_all(self):
@@ -30,7 +30,7 @@ class GenreDAO():
 
 
     def delete(self, gid):
-        author = self.get_one(gid)
+        genre = self.session.query(Genre).get(gid)
 
         self.session.delete(genre)
         self.session.commit()

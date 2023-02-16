@@ -6,7 +6,6 @@ from flask import Flask
 from flask_restx import Api
 
 from config import Config
-
 from setup_db import db
 from views.directors import director_ns
 from views.genres import genre_ns
@@ -29,11 +28,10 @@ def configure_app(applicaition):
     api.add_namespace(genre_ns)
     api.add_namespace(director_ns)
 
-def load_data():
-    with app.app_context():
-        # db.create_all()
-        db.session.commit()
 
+# def load_data():
+#     with app.app_context():
+#         db.session.commit()
 
 
 if __name__ == '__main__':
@@ -41,6 +39,6 @@ if __name__ == '__main__':
     app = create_app(app_config)
 
     configure_app(app)
-    load_data()
+    # load_data()
 
     app.run(host="localhost", port=10001)

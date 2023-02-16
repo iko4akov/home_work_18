@@ -6,7 +6,7 @@ class DirectorDAO():
         self.session = session
 
     def get_one(self, did):
-        return self.get_one(did)
+        return self.session.query(Director).get(did)
 
 
     def get_all(self):
@@ -30,7 +30,7 @@ class DirectorDAO():
 
 
     def delete(self, did):
-        director = self.get_one(did)
+        director = self.session.query(Director).get(did)
 
         self.session.delete(director)
         self.session.commit()

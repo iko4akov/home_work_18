@@ -13,7 +13,7 @@ genres_schema = GenreSchema(many=True)
 class GenresView(Resource):
     def get(self):
         all_genres = genre_service.get_all()
-        return genre_schema.dump(all_genres), 200
+        return genres_schema.dump(all_genres), 200
 
 
     def post(self):
