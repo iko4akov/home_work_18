@@ -58,3 +58,15 @@ class MovieService:
 
     def delete(self, mid):
         self.dao.delete(mid)
+
+    def mov_by_dir(self, director_id):
+        return self.dao.mov_by_dir(director_id)
+
+    def mov_by_gen(self, genre_id):
+        return self.dao.mov_by_gen(genre_id)
+
+    def mov_by_dir_gen(self, gen_id, dir_id):
+        return self.dao.mov_by_dir_gen(gen_id, dir_id)
+    def mov_by_year(self, year):
+        return self.dao.mov_by_year(year)
+

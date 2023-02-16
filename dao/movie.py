@@ -39,3 +39,16 @@ class MovieDAO():
 
         self.session.delete(movie)
         self.session.commit()
+
+    def mov_by_dir(self, director_id):
+        return self.session.query(Movie).filter(Movie.director_id == director_id).all()
+
+    def mov_by_gen(self, genre_id):
+        return self.session.query(Movie).filter(Movie.genre_id == genre_id).all()
+
+    def mov_by_dir_gen(self, dir_id, gen_id):
+        return self.session.query(Movie).filter(Movie.genre_id == gen_id, Movie.director_id == dir_id).all()
+
+    def mov_by_year(self, year):
+        return self.session.query(Movie).filter(Movie.year == year).all()
+
