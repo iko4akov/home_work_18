@@ -52,9 +52,9 @@ class MovieView(Resource):
             movie = movie_service.get_one(mid)
             return movie_schema.dump(movie)
 
-        except Exception:
+        except Exception as e:
 
-            return "", 404
+            return f"Received an error {e}", 404
 
     def put(self, mid: int):
         req_json = request.json
